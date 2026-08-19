@@ -1,24 +1,30 @@
 # Future Autos Hub
 
-build a responsive full stack website for a car business called "Future Autos" . This website is for a car business
+A responsive full-stack website for Future Autos — a premium car showroom offering hand-picked vehicles with transparent pricing.
 
-This project was built with [Lovable](https://lovable.dev).
+## Features
 
-## Build with Lovable
+- **Showroom Inventory**: Filter and browse luxury sedans, coupes, and SUVs.
+- **Detailed Vehicle Profiles**: Technical specs, features, and high-res imagery.
+- **Online Enquiries**: Schedule test drives and ask questions directly.
+- **Admin Dashboard**: Manage car listings and view enquiries.
+- **Authentication**: Secure email and OAuth authentication powered by Supabase.
 
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/85252de5-ec41-4f99-89ba-f60735ed8ee1).
+## Tech Stack
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
+- **Framework**: TanStack Start + React 19 + Vite + Nitro
+- **Styling**: Tailwind CSS & Lucide Icons
+- **Database & Auth**: Supabase
 
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+## Local Development
 
 ```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
+# Install dependencies
+npm install
+
+# Start local dev server
 npm run dev
+
+# Build for production
+npm run build
 ```
