@@ -14,16 +14,159 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      cars: {
+        Row: {
+          body_type: string
+          color: string
+          created_at: string
+          description: string
+          featured: boolean
+          fuel_type: string
+          id: string
+          image_url: string | null
+          make: string
+          mileage: number
+          model: string
+          price: number
+          status: Database["public"]["Enums"]["car_status"]
+          transmission: string
+          updated_at: string
+          year: number
+        }
+        Insert: {
+          body_type?: string
+          color?: string
+          created_at?: string
+          description?: string
+          featured?: boolean
+          fuel_type?: string
+          id?: string
+          image_url?: string | null
+          make: string
+          mileage?: number
+          model: string
+          price: number
+          status?: Database["public"]["Enums"]["car_status"]
+          transmission?: string
+          updated_at?: string
+          year: number
+        }
+        Update: {
+          body_type?: string
+          color?: string
+          created_at?: string
+          description?: string
+          featured?: boolean
+          fuel_type?: string
+          id?: string
+          image_url?: string | null
+          make?: string
+          mileage?: number
+          model?: string
+          price?: number
+          status?: Database["public"]["Enums"]["car_status"]
+          transmission?: string
+          updated_at?: string
+          year?: number
+        }
+        Relationships: []
+      }
+      inquiries: {
+        Row: {
+          car_id: string | null
+          created_at: string
+          email: string
+          id: string
+          message: string
+          name: string
+          phone: string | null
+          status: string
+          user_id: string | null
+        }
+        Insert: {
+          car_id?: string | null
+          created_at?: string
+          email: string
+          id?: string
+          message: string
+          name: string
+          phone?: string | null
+          status?: string
+          user_id?: string | null
+        }
+        Update: {
+          car_id?: string | null
+          created_at?: string
+          email?: string
+          id?: string
+          message?: string
+          name?: string
+          phone?: string | null
+          status?: string
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "inquiries_car_id_fkey"
+            columns: ["car_id"]
+            isOneToOne: false
+            referencedRelation: "cars"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          full_name: string | null
+          id: string
+        }
+        Insert: {
+          created_at?: string
+          full_name?: string | null
+          id: string
+        }
+        Update: {
+          created_at?: string
+          full_name?: string | null
+          id?: string
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "user"
+      car_status: "available" | "sold" | "reserved"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +293,9 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "user"],
+      car_status: ["available", "sold", "reserved"],
+    },
   },
 } as const
