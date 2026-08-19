@@ -21,6 +21,8 @@ export default defineConfig({
     }),
     nitro({
       defaultPreset: "netlify",
+      inlineDynamicImports: true,
+      noExternals: true,
     }),
     react(),
   ],
